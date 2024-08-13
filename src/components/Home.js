@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import StudentList from "./students/components/StudentList";
 
 const Home = () => {
-  return <div>this is home</div>;
+  return (
+    <div>
+      <StudentList />
+    </div>
+  );
 };
 
 export default Home;

@@ -1,21 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import AWS from "aws-sdk";
-import "../styles/components/Login.scss"; // Import the SCSS file for the component
+import {
+  loginUser,
+  getUserDetails,
+  registerUser,
+} from "../LoginServiceProvider";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    // AWS Cognito Authentication Logic
-    // Assume you have AWS SDK configured here
-    // Example: Using CognitoIdentityServiceProvider for authentication
-    const cognito = new AWS.CognitoIdentityServiceProvider();
-    // Add your logic to authenticate the user
-  };
-
   const [panelActive, setPanelActive] = useState(false);
   const [signUpForm, setSignUpForm] = useState({
     username: "",
@@ -23,11 +14,11 @@ function Login() {
     password: "",
   });
   const [signInForm, setSignInForm] = useState({
-    email: "",
+    username: "",
     password: "",
   });
   const navigate = useNavigate();
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Dummy state for authentication
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const toggleSignUp = () => {
     setPanelActive(true);
@@ -51,18 +42,57 @@ function Login() {
     });
   };
 
-  const handleSignUpSubmit = (e) => {
+  const handleSignUpSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form data for sign-up:", signUpForm);
-    // Replace this with your sign-up logic, e.g., call to an API
-    setIsAuthenticated(true); // Simulate successful sign-up
+
+    try {
+      const response = await registerUser(
+        signUpForm.username,
+        signUpForm.email,
+        signUpForm.password
+      );
+
+      if (response?.message == "User signed up successfully") {
+        setSignUpForm({
+          username: "",
+          email: "",
+          password: "",
+        });
+        setPanelActive(false);
+      }
+    } catch (error) {
+      console.error("Sign-in failed:", error);
+    }
   };
 
-  const handleSignInSubmit = (e) => {
+  const handleSignInSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form data for sign-in:", signInForm);
-    // Replace this with your sign-in logic, e.g., call to an API
-    setIsAuthenticated(true); // Simulate successful sign-in
+
+    try {
+      const response = await loginUser(
+        signInForm.username,
+        signInForm.password
+      );
+
+      if (response?.ChallengeName === "NEW_PASSWORD_REQUIRED") {
+        navigate("/change-password");
+      } else if (response?.AuthenticationResult) {
+        sessionStorage.setItem(
+          "authResult",
+          JSON.stringify(response.AuthenticationResult)
+        );
+
+        const userDetails = await getUserDetails();
+
+        sessionStorage.setItem("userDetails", JSON.stringify(userDetails));
+
+        navigate("/home");
+      } else {
+        console.error("Login failed, no AuthenticationResult received.");
+      }
+    } catch (error) {
+      console.error("Sign-in failed:", error);
+    }
   };
 
   return (
@@ -105,13 +135,13 @@ function Login() {
           <div className="form-container sign-in-container">
             <form onSubmit={handleSignInSubmit}>
               <h1>Sign In</h1>
-              <span>Or sign in using E-Mail Address</span>
+              <span>Or sign in using Username</span>
               <input
-                type="email"
-                placeholder="Email"
-                name="email"
+                type="text"
+                placeholder="Name"
+                name="username"
                 onChange={handleSignInChange}
-                value={signInForm.email}
+                value={signInForm.username}
               />
               <input
                 type="password"
@@ -120,7 +150,6 @@ function Login() {
                 onChange={handleSignInChange}
                 value={signInForm.password}
               />
-              <a href="#">Forgot your password?</a>
               <button type="submit">Sign In</button>
             </form>
           </div>

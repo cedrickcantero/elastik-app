@@ -1,75 +1,12 @@
-// src/styles/App.scss
-@import "./variables";
-@import "./mixins";
-@import "./global";
+@import "variables";
+@import "mixins";
+@import "base";
 
-.App {
-  text-align: center;
-  padding: 20px;
-
-  .Login {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
-    form {
-      display: flex;
-      flex-direction: column;
-
-      label {
-        margin-bottom: 5px;
-        font-weight: bold;
-      }
-
-      input {
-        margin-bottom: 15px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-      }
-
-      button {
-        padding: 10px;
-        background-color: $primary-color;
-        color: #fff;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-
-        &:hover {
-          background-color: darken($primary-color, 10%);
-        }
-      }
-    }
-
-    @include respond-to(tablet) {
-      max-width: 90%;
-    }
-  }
-
-  .StudentList {
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-
-    ul {
-      list-style-type: none;
-      padding: 0;
-
-      li {
-        padding: 10px 0;
-        border-bottom: 1px solid #eee;
-      }
-    }
-
-    @include respond-to(tablet) {
-      max-width: 90%;
-      margin: 0 auto;
-    }
-  }
-}
+@import "./components/Login.scss";
+@import "./components/StudentForm.scss";
+@import "./components/ChangePassword.scss";
+@import "./components/StudentList.scss";
+@import "./components/common/Header.scss";
+@import "./components/common/Body.scss";
+@import "./components/common/Footer.scss";
+@import "./components/common/Main.scss";

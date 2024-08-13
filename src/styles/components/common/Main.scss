@@ -1,0 +1,14 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header,
+footer {
+  flex-shrink: 0; /* Prevents them from getting squeezed */
+}
+
+body {
+  flex: 1; /* Takes up the remaining space */
+}
