@@ -55,3 +55,7 @@ npm install
 
 4. **ENV Variables**
    for the env variables ask the author, once you have it, create a .env file in /backend and paste the contents from the file
+
+5. **Once you have the env variables**
+    npm run start
+it will start both frontend and backend
