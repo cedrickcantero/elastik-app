@@ -1,6 +1,20 @@
-// src/styles/_variables.scss
+// Color Palette
 $primary-color: #3498db;
 $secondary-color: #2ecc71;
+$warning-color: #f39c12;
+$error-color: #e74c3c;
+$dark-text: #333;
+$light-text: #fff;
+
+// Font Stack
 $font-stack: "Arial", sans-serif;
 
-$breakpoint-tablet: 768px;
+// Spacing
+$small-spacing: 0.5rem;
+$medium-spacing: 1rem;
+$large-spacing: 2rem;
+
+// Breakpoints
+$small-screen: 600px;
+$medium-screen: 900px;
+$large-screen: 1200px;

@@ -1,0 +1,55 @@
+// Reset some basic elements
+html,
+body,
+div,
+span {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+// HTML root element
+html {
+  box-sizing: border-box;
+  font-size: 16px; // You can set this to whatever you like
+}
+
+// Box-sizing reset for easier width and height calculations
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+// Body styles
+body {
+  font-family: "Arial", sans-serif; // You can set this to your preferred font stack
+  line-height: 1.6;
+  background-color: #f4f4f4; // Or whatever background color you want
+
+  // Flexbox layout
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  // justify-content: flex-start; // Or 'center', 'space-between', etc.
+  min-height: 100vh; // To ensure it takes up at least the full height of the screen
+
+  .App {
+    flex: 1;
+    @include flexbox(column);
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+// Container for your content
+.main-container {
+  width: 100%;
+  max-width: 100%; // Or whatever maximum width you want
+
+  // More Flexbox layout, if needed
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
