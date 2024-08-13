@@ -89,6 +89,18 @@ const signUpUser = async (username, password, email) => {
 
   try {
     const response = await cognito.signUp(params).promise();
+
+    const adminSetUserPasswordParams = {
+      UserPoolId: process.env.AWS_USER_POOL_ID,
+      Username: username,
+      Password: password,
+      Permanent: false,
+    };
+
+    await cognito.adminSetUserPassword(adminSetUserPasswordParams).promise();
+    console.log("User password set to require change on first login");
+
+    return response;
     return response;
   } catch (error) {
     throw new Error(error.message || "Failed to sign up user");

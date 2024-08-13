@@ -1,8 +1,5 @@
 import { default as documentApi } from "../../serviceApi";
 
-const localhost = "http://localhost:3005";
-
-// Function to handle user login
 export const loginUser = async (username, password) => {
   try {
     const response = await documentApi.post(`/login`, { username, password });

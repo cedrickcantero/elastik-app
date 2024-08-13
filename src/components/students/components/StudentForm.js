@@ -36,7 +36,6 @@ function StudentForm() {
       setLastName("");
       setEmail("");
       setDob("");
-      console.log("response", response);
       if (response == "Student created successfully!") {
         navigate("/home");
       }

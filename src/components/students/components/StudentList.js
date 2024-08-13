@@ -20,7 +20,7 @@ function StudentList() {
     const fetchStudents = async () => {
       try {
         const response = await getStudents();
-        setStudents(response);
+        setStudents(response.filter((student) => student.teacher === teacher));
       } catch (error) {
         console.error("Error fetching students:", error);
       }
@@ -37,11 +37,7 @@ function StudentList() {
   const handleDelete = async (id) => {
     try {
       await deleteStudent(id);
-      setStudents(
-        students.filter(
-          (student) => student.ID !== id && student.teacher === teacher
-        )
-      );
+      setStudents(students.filter((student) => student.ID !== id));
     } catch (error) {
       console.error("Error deleting student:", error);
     }

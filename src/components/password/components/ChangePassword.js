@@ -10,20 +10,20 @@ const ChangePassword = () => {
   const [newPassword, setNewPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const navigate = useNavigate;
+  const navigate = useNavigate();
 
   const handleChangePassword = async (e) => {
     e.preventDefault();
 
     try {
       const response = await changePasswordOnFirstLogin(
-        email, // Assuming email is used as the username
+        username,
+        email,
         oldPassword,
         newPassword
       );
 
       if (response && response.AuthenticationResult) {
-        // Save AuthenticationResult to session storage
         sessionStorage.setItem(
           "authResult",
           JSON.stringify(response.AuthenticationResult)
