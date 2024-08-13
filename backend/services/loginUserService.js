@@ -20,7 +20,8 @@ const loginUserService = async (username, password) => {
     );
     return response?.data?.data;
   } catch (error) {
-    res.status(500).json({ error: "Could not create student" });
+    console.log("error", error);
+    res.status(500).json({ error: "Could not login" });
   }
 };
 

@@ -21,10 +21,19 @@ function Login() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const toggleSignUp = () => {
+    setSignUpForm({
+      username: "",
+      email: "",
+      password: "",
+    });
     setPanelActive(true);
   };
 
   const toggleSignIn = () => {
+    setSignInForm({
+      username: "",
+      password: "",
+    });
     setPanelActive(false);
   };
 
