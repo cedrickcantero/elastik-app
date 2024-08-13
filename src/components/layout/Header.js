@@ -4,14 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 const Header = () => {
   const navigate = useNavigate();
 
-  // Example: Assume the user details are stored in session storage
   const userDetails = JSON.parse(sessionStorage.getItem("userDetails"));
   const username = userDetails?.Username;
 
   const logoutUser = () => {
-    // Clear user session or any stored tokens
     sessionStorage.removeItem("userDetails");
-    // Redirect to the login page or home
     navigate("/login");
   };
 

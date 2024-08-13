@@ -8,7 +8,6 @@ import StudentList from "./components/students/components/StudentList";
 import StudentForm from "./components/students/components/StudentForm";
 
 const RouterManager = () => {
-  // Removed isAuthenticated prop as we will get it from global state
   return (
     <Routes>
       <Route path="/" element={<Login />} />
