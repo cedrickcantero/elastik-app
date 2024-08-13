@@ -1,0 +1,11 @@
+// src/styles/_global.scss
+body {
+  font-family: $font-stack;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+h2 {
+  color: $primary-color;
+}

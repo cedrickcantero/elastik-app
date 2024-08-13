@@ -1,0 +1,8 @@
+// src/styles/_mixins.scss
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == tablet {
+    @media (max-width: $breakpoint-tablet) {
+      @content;
+    }
+  }
+}
