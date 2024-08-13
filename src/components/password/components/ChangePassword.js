@@ -1,4 +1,3 @@
-// src/components/ChangePassword.js
 import React, { useState } from "react";
 import { changePasswordOnFirstLogin } from "../ChangePasswordServiceProvider";
 import { useNavigate } from "react-router-dom";

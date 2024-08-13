@@ -31,3 +31,27 @@ Elastik is an innovative platform that supports, connects, and empowers everyone
    ```bash
    git clone https://github.com/your-username/elastik-app.git
    cd elastik-app
+   ```
+
+## Setting Up the Project
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/your-username/elastik-app.git
+   cd elastik-app
+
+   ```
+
+2. **For the frontend**
+
+cd frontend
+npm install
+
+3. **For the backend**
+
+cd ../backend
+npm install
+
+4. **ENV Variables**
+   for the env variables ask from the author

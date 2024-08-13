@@ -1,6 +1,5 @@
 import { default as documentApi } from "../../serviceApi";
 
-// Function to get the list of students
 export const getStudents = async () => {
   try {
     const response = await documentApi.get(`/students`);
