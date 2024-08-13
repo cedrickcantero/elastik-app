@@ -17,22 +17,23 @@ function StudentList() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const getTeacher = JSON.parse(sessionStorage.getItem("userDetails"));
+    setTeacher(getTeacher?.Username);
+  }, []);
+
+  useEffect(() => {
     const fetchStudents = async () => {
       try {
         const response = await getStudents();
-        setStudents(response.filter((student) => student.teacher === teacher));
+        setStudents(response.filter((student) => student.teacher == teacher));
       } catch (error) {
         console.error("Error fetching students:", error);
       }
     };
 
     fetchStudents();
-  }, []);
-
-  useEffect(() => {
-    const getTeacher = JSON.parse(sessionStorage.getItem("userDetails"));
-    setTeacher(getTeacher?.Username);
-  }, []);
+  }, [teacher]);
+  console.log("teacher", teacher);
 
   const handleDelete = async (id) => {
     try {
